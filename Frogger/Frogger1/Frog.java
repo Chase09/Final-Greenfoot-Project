@@ -15,17 +15,20 @@ public class Frog extends Actor
     public void act() 
     {
         //getImage().scale(35,35);
-        reachesEnd();
         move();
-        touchWater();
+        reachesEnd();
+        touchesWater();
     }    
 
+    /**
+     * move - This makes it so when you use the arrow keys the frog moves
+     * that way. Also it makes it so when you touch the log you stay on it.
+     * 
+     * @return Nothing is being returned
+     * @param There are no parameters
+     */
     private void move()
     {
-        if(isTouching(Log.class) )
-        {
-            setLocation(getX() +1,getY());
-        }
 
         if(Greenfoot.isKeyDown("up"))
         {
@@ -46,8 +49,24 @@ public class Frog extends Actor
         {
             setLocation(getX()+1, getY());
         }
-    }
 
+        if(isTouching(Log.class) )
+        {
+            setLocation(getX() +1,getY());
+        }
+        if(isTouching(Log2.class) )
+        {
+            setLocation(getX() -1,getY());
+        }
+    }
+    
+    /**
+     * reachesEnd - This makes it so when you reach the end you get the you win
+     * text pop up on the world.
+     * 
+     * @return Nothing is being returned
+     * @param There are no parameters
+     */
     private void reachesEnd()
     {
         if(getY() <= 30 ) 
@@ -57,20 +76,27 @@ public class Frog extends Actor
         }
     }
 
-    private void touchWater()
+    /**
+     * This makes it so when you touch the water you die and the gameover screen pops 
+     * up but when your on the log or lillypad you dont.
+     * 
+     * @return Nothing is being returned
+     * @param There are no parameters
+     */
+    private void touchesWater()
     {
         GameOver gameover = new GameOver();
 
-        if(getY()>= 100 && getY()<= 190)
+        if(getY()>= 40 && getY()<= 190)
         {
-            if(!isTouching(Log.class)&& !isTouching(LillyPad.class))  
+            if(!isTouching(Log.class) && !isTouching(Log2.class) && !isTouching(LillyPad.class))  
             {
                 getWorld().addObject(gameover, getWorld().getWidth()/2, getWorld().getHeight()/2 -70);
                 getWorld().removeObject(this);
-                Greenfoot.stop();
+
             }
 
         }
-    }
 
+    }
 }

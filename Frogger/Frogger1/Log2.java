@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Log extends Actor
+public class Log2 extends Actor
 {
     /**
      * Act - do whatever the log wants to do. This method is called whenever
@@ -26,9 +26,9 @@ public class Log extends Actor
      */
     private void move()
     {
-        move(1);
+        move(-1);
     }
-
+    
     /**
      * atEdge - This makes it so when the Log reaches the edge
      * it gets removed from the world.

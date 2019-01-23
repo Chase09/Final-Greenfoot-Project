@@ -15,7 +15,13 @@ public class GameOver extends Actor
     public void act() 
     {
         // Add your action code here.
-    }   
+    } 
+    /**
+     * GameOver - This makes the image bigger on the screen
+     * 
+     * @return Nothing is being returned
+     * @param There are no parameters
+     */
     public GameOver()
     {
         getImage().scale(300,300);

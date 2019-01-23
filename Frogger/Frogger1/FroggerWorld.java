@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import javax.swing.JOptionPane;
 
 /**
  * Write a description of class CopyOfFroggerWorld here.
@@ -8,21 +9,35 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class FroggerWorld extends World
 {
-    int i = 0;
-    int j = 0;
-    int k = 0;
-    int l = 0;
-    int m = 0;
+    
+    private int i = 0;
+    private int j = 0;
+    private int k = 0;
+    private int l = 0;
+    private int m = 0;
+
+    private boolean isAllLetters = true;
+
+    private String username;
+    
+    private int[] lX = new int[]{100, 100, 100, 100, 200, 200, 200, 200, 300, 300, 300, 300, 400, 400, 400, 400, 500, 500, 500, 500, 600, 600, 600, 600};
+    private int[] lY = new int[]{50, 95, 140, 178,50, 95, 140, 178,50, 95, 140, 178,50, 95, 140, 178,50, 95, 140, 178,50, 95, 140, 178,};
     /**
-     * Constructor for objects of class CopyOfFroggerWorld.
+     * Constructor for objects of class CopyOfFroggerWorld. This method adds all the
+     * objects to the world such as, log, car, frog,etc. it also makes sure
+     * that when you put your name in at the start there can only be letters.
+     * 
+     * @return Nothing is being returned
+     * @param There are no parameters
      * 
      */
     public FroggerWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
-        addObject(new Frog(),getWidth()/2,520);
-
+        
+        setPaintOrder(GameOver.class);
+        setPaintOrder(Frog.class);
         addObject(new Car(),0, 300);
         addObject(new Car(),100, 300);
         addObject(new Car(),200, 300);
@@ -31,62 +46,39 @@ public class FroggerWorld extends World
         addObject(new Car(),500, 300);
         addObject(new Car(),600, 300);
 
-        addObject(new Log(),0, 195);
-        addObject(new Log(),0, 120);
-        addObject(new Log(),0, 165);
-        addObject(new Log(),0, 50);
-        addObject(new Log(),100, 195);
-        addObject(new Log(),100, 120);
-        addObject(new Log(),100, 165);
-        addObject(new Log(),100, 50);
-        addObject(new Log(),200, 195);
-        addObject(new Log(),200, 120);
-        addObject(new Log(),200, 165);
-        addObject(new Log(),200, 50);
-        addObject(new Log(),300, 195);
-        addObject(new Log(),300, 120);
-        addObject(new Log(),300, 165);
-        addObject(new Log(),300, 50);
-        addObject(new Log(),400, 195);
-        addObject(new Log(),400, 120);
-        addObject(new Log(),400, 165);
-        addObject(new Log(),400, 50);
-        addObject(new Log(),500, 195);
-        addObject(new Log(),500, 120);
-        addObject(new Log(),500, 165);
-        addObject(new Log(),500, 50);
-        addObject(new Log(),600, 195);
-        addObject(new Log(),600, 50);
-        addObject(new Log(),600, 120);
-        addObject(new Log(),600, 165);
+        addObject(new Log2(),0, 195);
+        addObject(new Log2(),0, 120);
+        addObject(new Log(),0, 160);
+        addObject(new Log(),0, 71);
+        addObject(new Log2(),100, 195);
+        addObject(new Log2(),100, 120);
+        addObject(new Log(),100, 160);
+        addObject(new Log(),100, 71);
+        addObject(new Log2(),200, 195);
+        addObject(new Log2(),200, 120);
+        addObject(new Log(),200, 160);
+        addObject(new Log(),200, 71);
+        addObject(new Log2(),300, 195);
+        addObject(new Log2(),300, 120);
+        addObject(new Log(),300, 160);
+        addObject(new Log(),300, 71);
+        addObject(new Log2(),400, 195);
+        addObject(new Log2(),400, 120);
+        addObject(new Log(),400, 160);
+        addObject(new Log(),400, 71);
+        addObject(new Log2(),500, 195);
+        addObject(new Log2(),500, 120);
+        addObject(new Log(),500, 160);
+        addObject(new Log(),500, 71);
+        addObject(new Log2(),600, 195);
+        addObject(new Log(),600, 71);
+        addObject(new Log2(),600, 120);
+        addObject(new Log(),600, 160);
 
         addObject(new Button(),50,380);
-        
-        addObject(new LillyPad(),100,145);
-        addObject(new LillyPad(),100,75);
-        addObject(new LillyPad(),200,145);
-        addObject(new LillyPad(),200,75);
-        addObject(new LillyPad(),300,145);
-        addObject(new LillyPad(),300,75);
-        addObject(new LillyPad(),400,145);
-        addObject(new LillyPad(),400,75);
-        addObject(new LillyPad(),500,145);
-        addObject(new LillyPad(),500,75);
-        addObject(new LillyPad(),600,145);
-        addObject(new LillyPad(),600,75);
-        addObject(new LillyPad(),100,100);
-        addObject(new LillyPad(),200,100);
-        addObject(new LillyPad(),300,100);
-        addObject(new LillyPad(),400,100);
-        addObject(new LillyPad(),500,100);
-        addObject(new LillyPad(),600,100);
-        addObject(new LillyPad(),100,182);
-        addObject(new LillyPad(),200,182);
-        addObject(new LillyPad(),300,182);
-        addObject(new LillyPad(),400,182);
-        addObject(new LillyPad(),500,182);
-        addObject(new LillyPad(),600,182);
 
+        showText("RESET", 50, 382);      
+        
         addObject(new Car2(),600, 350);
         addObject(new Car3(),600, 250);
         addObject(new Car2(),500, 350);
@@ -102,6 +94,35 @@ public class FroggerWorld extends World
 
         addObject(new end(), 300, 15);
 
+        addObject(new Frog(),getWidth()/2,520);
+        addLillyPads();
+        
+        do
+        {
+            isAllLetters = true;
+            username = JOptionPane.showInputDialog(null,"Please enter your name:");
+
+            for( int i = 0; i < username.length(); i++ )
+            {
+                if( Character.isAlphabetic( username.charAt(i) ) == false )
+                {
+                    isAllLetters = false;
+                }
+            }
+        } while( isAllLetters == false );
+    }
+    /**
+     * This makes it so he lilly pads are on the screen when you play.
+     * 
+     * @return Nothing is being returned
+     * @param There are no parameters
+     */
+    private void addLillyPads()
+    {
+        for(int i = 0; i < lX.length; i++)
+        {
+            addObject(new LillyPad(),lX[i],lY[i]);
+        }
     }
 
     private void car1()
@@ -121,25 +142,35 @@ public class FroggerWorld extends World
 
     private void Log1()
     {
-        addObject(new Log(),0, 195);
+        addObject(new Log2(),600, 195);
     }
 
     private void Log2()
     {
-        addObject(new Log(),0, 50);
+        addObject(new Log(),0, 75);
     }
 
     private void Log3()
     {
-        addObject(new Log(),0, 120);
+        addObject(new Log2(),600, 120);
     }
-    
+
     private void Log4()
     {
-        addObject(new Log(),0, 165);
+        addObject(new Log(),0, 160);
     }
+    /**
+     * This makes it so you can see your name you put in at the start in the bottom 
+     * right corner. It also makes it so the cars and logs keep spawning in at the 
+     * edge of the world.
+     * 
+     * @return Nothing is being returned
+     * @param There are no parameters
+     */
     public void act()
     {
+        showText( "Player: " + username, 450, 375);
+        
         if(i == 100)
         {
             car1();
@@ -194,7 +225,7 @@ public class FroggerWorld extends World
         {
             i++;
         }
-         if(m == 100)
+        if(m == 100)
         {
             Log4();
             m = 0;

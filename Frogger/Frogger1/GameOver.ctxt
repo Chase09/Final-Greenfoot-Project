@@ -6,4 +6,5 @@ comment1.target=void\ act()
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ GameOver\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment2.params=
 comment2.target=GameOver()
+comment2.text=\r\n\ GameOver\ -\ This\ makes\ the\ image\ bigger\ on\ the\ screen\r\n\ \r\n\ @return\ Nothing\ is\ being\ returned\r\n\ @param\ There\ are\ no\ parameters\r\n
 numComments=3

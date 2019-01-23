@@ -19,5 +19,9 @@ public class Button extends Actor
         {
             Greenfoot.setWorld(new FroggerWorld());
         }
+        if(Greenfoot.isKeyDown("r"))
+        {
+            Greenfoot.setWorld(new FroggerWorld());
+        }
     }
 }

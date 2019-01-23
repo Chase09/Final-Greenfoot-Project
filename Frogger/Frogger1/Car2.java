@@ -20,11 +20,24 @@ public class Car2 extends Actor
         atEdge();
     }    
 
+    /**
+     * move - This makes the car move left in the world.
+     * 
+     * @return Nothing is being returned
+     * @param There are no parameters
+     */
     private void move()
     {
         move(-1);
     }
     
+    /**
+     * atEdge - This makes it so when the car reaches the edge
+     * it gets removed from the world.
+     * 
+     * @return Nothing is being returned
+     * @param There are no parameters
+     */
     private void atEdge()
     {
         if(isAtEdge() == true)
@@ -33,6 +46,13 @@ public class Car2 extends Actor
         }
     }
    
+    /**
+     * This makes it so when the car is touching the frog the frog 
+     * gets removed from the world. Then the gameover screen pops up.
+     * 
+     * @return Nothing is being returned
+     * @param There are no parameters
+     */
     private void checkForFrogs()
     {
         if(isTouching(Frog.class) == true)
@@ -40,7 +60,7 @@ public class Car2 extends Actor
             removeTouching(Frog.class);
             GameOver gameover = new GameOver();
             getWorld().addObject(gameover, getWorld().getWidth()/2, getWorld().getHeight()/2 -70);
-            Greenfoot.stop();
+            
         }
     }
 }
