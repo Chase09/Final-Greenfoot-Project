@@ -69,9 +69,11 @@ public class Frog extends Actor
      */
     private void reachesEnd()
     {
+        YouWin youwin = new YouWin();
         if(getY() <= 30 ) 
         {
-            getWorld().showText("YOU WIN!", getWorld().getWidth()/2, 60);
+            
+            getWorld().addObject(youwin, getWorld().getWidth()/2, getWorld().getHeight()/2 );
             Greenfoot.stop();
         }
     }

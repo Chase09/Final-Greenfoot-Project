@@ -46,6 +46,11 @@ public class FroggerWorld extends World
         addObject(new Car(),500, 300);
         addObject(new Car(),600, 300);
 
+        
+
+        addObject(new Button(),50,380);
+
+        showText("RESET", 50, 382); 
         addObject(new Log2(),0, 195);
         addObject(new Log2(),0, 120);
         addObject(new Log(),0, 160);
@@ -74,10 +79,6 @@ public class FroggerWorld extends World
         addObject(new Log(),600, 71);
         addObject(new Log2(),600, 120);
         addObject(new Log(),600, 160);
-
-        addObject(new Button(),50,380);
-
-        showText("RESET", 50, 382);      
         
         addObject(new Car2(),600, 350);
         addObject(new Car3(),600, 250);
